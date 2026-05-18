@@ -1,0 +1,69 @@
+{
+  "info": {
+    "name": "Game Zone Seat Reservation System",
+    "description": "Complete API collection for Game Zone Seat Reservation System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "base_url", "value": "http://localhost:8000", "type": "string" }],
+  "item": [
+    {
+      "name": "🔐 Common",
+      "item": [
+        { "name": "Signup", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/signup", "host": ["{{base_url}}"], "path": ["signup"] }, "body": { "mode": "raw", "raw": "{\n  \"name\": \"Aryan Patel\",\n  \"email\": \"aryan@gmail.com\",\n  \"phone\": \"9900000002\",\n  \"address\": \"Satellite, Ahmedabad\",\n  \"password\": \"Aryan@123\"\n}" } } },
+        { "name": "Login (User)", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/login", "host": ["{{base_url}}"], "path": ["login"] }, "body": { "mode": "raw", "raw": "{\n  \"email\": \"aryan@gmail.com\",\n  \"password\": \"Aryan@123\"\n}" } } },
+        { "name": "Login (Admin)", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/login", "host": ["{{base_url}}"], "path": ["login"] }, "body": { "mode": "raw", "raw": "{\n  \"email\": \"admin@gamezone.com\",\n  \"password\": \"Admin@123\"\n}" } } },
+        { "name": "Logout", "request": { "method": "GET", "url": { "raw": "{{base_url}}/logout", "host": ["{{base_url}}"], "path": ["logout"] } } },
+        { "name": "Session", "request": { "method": "GET", "url": { "raw": "{{base_url}}/session", "host": ["{{base_url}}"], "path": ["session"] } } },
+        { "name": "Change Password", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/changePassword", "host": ["{{base_url}}"], "path": ["changePassword"] }, "body": { "mode": "raw", "raw": "{\n  \"email\": \"aryan@gmail.com\",\n  \"newPassword\": \"NewPass@123\"\n}" } } }
+      ]
+    },
+    {
+      "name": "🌐 Public",
+      "item": [
+        { "name": "Get All Games", "request": { "method": "GET", "url": { "raw": "{{base_url}}/games", "host": ["{{base_url}}"], "path": ["games"] } } },
+        { "name": "Get Game Details (with slots & seats)", "request": { "method": "GET", "url": { "raw": "{{base_url}}/games/GAME_ID_HERE", "host": ["{{base_url}}"], "path": ["games", "GAME_ID_HERE"] } } },
+        { "name": "Get Available Slots for Game", "request": { "method": "GET", "url": { "raw": "{{base_url}}/slots/GAME_ID_HERE", "host": ["{{base_url}}"], "path": ["slots", "GAME_ID_HERE"] } } },
+        { "name": "Get All Seats for Game", "request": { "method": "GET", "url": { "raw": "{{base_url}}/seats/GAME_ID_HERE", "host": ["{{base_url}}"], "path": ["seats", "GAME_ID_HERE"] } } },
+        { "name": "Get All Feedbacks", "request": { "method": "GET", "url": { "raw": "{{base_url}}/feedbacks", "host": ["{{base_url}}"], "path": ["feedbacks"] } } }
+      ]
+    },
+    {
+      "name": "🟢 User (Session Required)",
+      "item": [
+        { "name": "Get Profile", "request": { "method": "GET", "url": { "raw": "{{base_url}}/user/profile", "host": ["{{base_url}}"], "path": ["user", "profile"] } } },
+        { "name": "Update Profile (with image)", "request": { "method": "POST", "url": { "raw": "{{base_url}}/user/updateProfile", "host": ["{{base_url}}"], "path": ["user", "updateProfile"] }, "body": { "mode": "formdata", "formdata": [{ "key": "name", "value": "Aryan Kumar Patel", "type": "text" }, { "key": "phone", "value": "9911111111", "type": "text" }, { "key": "address", "value": "Bopal, Ahmedabad", "type": "text" }, { "key": "profile_image", "src": "", "type": "file" }] } } },
+        { "name": "Book Seat", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/user/bookSeat", "host": ["{{base_url}}"], "path": ["user", "bookSeat"] }, "body": { "mode": "raw", "raw": "{\n  \"game_id\": \"GAME_ID_HERE\",\n  \"slot_id\": \"SLOT_ID_HERE\",\n  \"seat_id\": \"SEAT_ID_HERE\"\n}" } } },
+        { "name": "My Bookings", "request": { "method": "GET", "url": { "raw": "{{base_url}}/user/myBookings", "host": ["{{base_url}}"], "path": ["user", "myBookings"] } } },
+        { "name": "Cancel Booking", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/user/cancelBooking", "host": ["{{base_url}}"], "path": ["user", "cancelBooking"] }, "body": { "mode": "raw", "raw": "{\n  \"booking_id\": \"BOOKING_ID_HERE\"\n}" } } },
+        { "name": "Generate Razorpay Order ID", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/user/genOrderId", "host": ["{{base_url}}"], "path": ["user", "genOrderId"] }, "body": { "mode": "raw", "raw": "{\n  \"booking_id\": \"BOOKING_ID_HERE\"\n}" } } },
+        { "name": "Verify Razorpay Payment", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/user/verifyPayment", "host": ["{{base_url}}"], "path": ["user", "verifyPayment"] }, "body": { "mode": "raw", "raw": "{\n  \"booking_id\": \"BOOKING_ID_HERE\",\n  \"razorpay_order_id\": \"order_XXXX\",\n  \"razorpay_payment_id\": \"pay_XXXX\",\n  \"razorpay_signature\": \"sig_XXXX\"\n}" } } },
+        { "name": "Add Feedback", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/user/addFeedback", "host": ["{{base_url}}"], "path": ["user", "addFeedback"] }, "body": { "mode": "raw", "raw": "{\n  \"booking_id\": \"BOOKING_ID_HERE\",\n  \"rating\": 5,\n  \"feedback\": \"Amazing experience! The VR shooting game was incredibly immersive.\"\n}" } } }
+      ]
+    },
+    {
+      "name": "🔴 Admin (Session Required)",
+      "item": [
+        { "name": "Get All Users", "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/users", "host": ["{{base_url}}"], "path": ["admin", "users"] } } },
+        { "name": "Update User Status (Activate)", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/admin/updateUserStatus", "host": ["{{base_url}}"], "path": ["admin", "updateUserStatus"] }, "body": { "mode": "raw", "raw": "{\n  \"user_id\": \"USER_ID_HERE\",\n  \"status\": \"Active\"\n}" } } },
+        { "name": "Update User Status (Deactivate)", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/admin/updateUserStatus", "host": ["{{base_url}}"], "path": ["admin", "updateUserStatus"] }, "body": { "mode": "raw", "raw": "{\n  \"user_id\": \"USER_ID_HERE\",\n  \"status\": \"Inactive\"\n}" } } },
+        { "name": "Add Game (with image)", "request": { "method": "POST", "url": { "raw": "{{base_url}}/admin/addGame", "host": ["{{base_url}}"], "path": ["admin", "addGame"] }, "body": { "mode": "formdata", "formdata": [{ "key": "name", "value": "VR Shooting", "type": "text" }, { "key": "description", "value": "Virtual reality shooting game with immersive 3D environments.", "type": "text" }, { "key": "image", "src": "", "type": "file" }] } } },
+        { "name": "Update Game (with image)", "request": { "method": "POST", "url": { "raw": "{{base_url}}/admin/updateGame", "host": ["{{base_url}}"], "path": ["admin", "updateGame"] }, "body": { "mode": "formdata", "formdata": [{ "key": "id", "value": "GAME_ID_HERE", "type": "text" }, { "key": "name", "value": "VR Shooting Pro", "type": "text" }, { "key": "status", "value": "Active", "type": "text" }, { "key": "image", "src": "", "type": "file" }] } } },
+        { "name": "Delete Game", "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/deleteGame/GAME_ID_HERE", "host": ["{{base_url}}"], "path": ["admin", "deleteGame", "GAME_ID_HERE"] } } },
+        { "name": "Get All Games (Admin)", "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/games", "host": ["{{base_url}}"], "path": ["admin", "games"] } } },
+        { "name": "Add Slot", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/admin/addSlot", "host": ["{{base_url}}"], "path": ["admin", "addSlot"] }, "body": { "mode": "raw", "raw": "{\n  \"game_id\": \"GAME_ID_HERE\",\n  \"slot_time_start\": \"10:00 AM\",\n  \"slot_time_end\": \"11:00 AM\",\n  \"duration\": 60,\n  \"price\": 350\n}" } } },
+        { "name": "Update Slot", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/admin/updateSlot", "host": ["{{base_url}}"], "path": ["admin", "updateSlot"] }, "body": { "mode": "raw", "raw": "{\n  \"id\": \"SLOT_ID_HERE\",\n  \"price\": 400,\n  \"status\": \"Available\"\n}" } } },
+        { "name": "Delete Slot", "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/deleteSlot/SLOT_ID_HERE", "host": ["{{base_url}}"], "path": ["admin", "deleteSlot", "SLOT_ID_HERE"] } } },
+        { "name": "Get All Slots (Admin)", "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/slots", "host": ["{{base_url}}"], "path": ["admin", "slots"] } } },
+        { "name": "Add Seat", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/admin/addSeat", "host": ["{{base_url}}"], "path": ["admin", "addSeat"] }, "body": { "mode": "raw", "raw": "{\n  \"game_id\": \"GAME_ID_HERE\",\n  \"seat_no\": \"VR-A5\"\n}" } } },
+        { "name": "Update Seat", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/admin/updateSeat", "host": ["{{base_url}}"], "path": ["admin", "updateSeat"] }, "body": { "mode": "raw", "raw": "{\n  \"id\": \"SEAT_ID_HERE\",\n  \"seat_no\": \"VR-A5\",\n  \"status\": \"Available\"\n}" } } },
+        { "name": "Delete Seat", "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/deleteSeat/SEAT_ID_HERE", "host": ["{{base_url}}"], "path": ["admin", "deleteSeat", "SEAT_ID_HERE"] } } },
+        { "name": "Get All Seats (Admin)", "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/seats", "host": ["{{base_url}}"], "path": ["admin", "seats"] } } },
+        { "name": "Get All Bookings", "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/bookings", "host": ["{{base_url}}"], "path": ["admin", "bookings"] } } },
+        { "name": "Update Booking (Cancel)", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": { "raw": "{{base_url}}/admin/updateBooking", "host": ["{{base_url}}"], "path": ["admin", "updateBooking"] }, "body": { "mode": "raw", "raw": "{\n  \"id\": \"BOOKING_ID_HERE\",\n  \"status\": \"Cancelled\"\n}" } } },
+        { "name": "Get All Payments", "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/payments", "host": ["{{base_url}}"], "path": ["admin", "payments"] } } },
+        { "name": "Get All Feedbacks (Admin)", "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/feedbacks", "host": ["{{base_url}}"], "path": ["admin", "feedbacks"] } } },
+        { "name": "Dashboard Stats", "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/dashboardStats", "host": ["{{base_url}}"], "path": ["admin", "dashboardStats"] } } }
+      ]
+    }
+  ]
+}
