@@ -69,7 +69,7 @@ app.use(cors({
     "http://localhost:3001",
     "http://localhost:5173",
     "http://localhost:5174",
-    "https://your-frontend.onrender.com", // ← replace with your actual frontend URL
+    "https://gamezone-5c3r.vercel.app",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
