@@ -70,6 +70,7 @@ app.use(cors({
     "http://localhost:5173",
     "http://localhost:5174",
     "https://gamezone-5c3r.vercel.app",
+    "https://gamezone-iota-nine.vercel.app"
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
