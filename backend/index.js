@@ -63,22 +63,15 @@ const PORT = process.env.PORT || 8000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(cors({
-//   origin: [
-//     "http://localhost:3000",
-//     "http://localhost:3001",
-//     "http://localhost:5173",
-//     "http://localhost:5174",
-//     "https://gamezone-5c3r.vercel.app",
-//     "https://gamezone-iota-nine.vercel.app"
-//   ],
-//   credentials: true,
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-// }));
 
 app.use(cors({
-  origin: true,
-  credentials: true,
+  origin: [
+    "https://gamezone-5c3r.vercel.app",
+    "https://gamezone-5c3r-h9xobdbg8-i-am-manavs-projects.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:5174"
+  ],
+  credentials: true
 }));
 // ── Static File Serving ───────────────────────────────────────────────────────
 app.use("/uploads/games", express.static("uploads/games"));
