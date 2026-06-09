@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { toast } from "react-toastify"
 import { myBookings, cancelBooking, genOrderId, verifyPayment, addFeedback } from "../services/api"
 
-const BACKEND = "http://localhost:8000"
+const BACKEND = import.meta.env.VITE_API_URL || "http://localhost:8000"
 const RAZORPAY_KEY = "rzp_test_SpMwdOCtOvvVKT"
 
 export default function MyBookings() {

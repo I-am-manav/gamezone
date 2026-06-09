@@ -4,7 +4,7 @@ import AdminLayout from "../common/AdminLayout"
 import DataTable from "../common/DataTable"
 import { getAdminGames, addGame, updateGame, deleteGame } from "../services/api"
 
-const BACKEND = "http://localhost:8000"
+const BACKEND = import.meta.env.VITE_API_URL || "http://localhost:8000"
 const empty = { name: "", description: "", status: "Active" }
 
 export default function ManageGames({ setIsAuthenticated, adminName }) {

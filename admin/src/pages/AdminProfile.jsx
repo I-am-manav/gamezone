@@ -5,7 +5,7 @@ import { getProfile, updateProfile, changePassword } from "../services/api"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-const BACKEND = "http://localhost:8000"
+const BACKEND = import.meta.env.VITE_API_URL || "http://localhost:8000"
 
 export default function AdminProfile({ setIsAuthenticated, adminName }) {
   const [profile, setProfile] = useState(null)

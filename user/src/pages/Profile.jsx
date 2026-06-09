@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { toast } from "react-toastify"
 import { getProfile, updateProfile, changePassword } from "../services/api"
 
-const BACKEND = "http://localhost:8000"
+const BACKEND = import.meta.env.VITE_API_URL || "http://localhost:8000"
 
 export default function Profile({ userData, setUserData }) {
   const [profile, setProfile] = useState(null)
@@ -17,7 +17,7 @@ export default function Profile({ userData, setUserData }) {
   const [passForm, setPassForm] = useState({ newPassword: "", confirm: "" })
 
   const fetchProfile = async () => {
-    try { const r = await getProfile(); const d = r.data.data; setProfile(d); setForm({ name: d.name||"", phone: d.phone||"", address: d.address||"" }) }
+    try { const r = await getProfile(); const d = r.data.data; setProfile(d); setForm({ name: d.name || "", phone: d.phone || "", address: d.address || "" }) }
     catch { toast.error("Failed to load profile") }
     finally { setLoading(false) }
   }
@@ -30,7 +30,7 @@ export default function Profile({ userData, setUserData }) {
       fd.append("name", form.name); fd.append("phone", form.phone); fd.append("address", form.address)
       if (imageFile) fd.append("profile_image", imageFile)
       const r = await updateProfile(fd)
-      if (r.data.success) { toast.success("Profile updated!"); setImageFile(null); setPreview(null); fetchProfile(); setUserData(prev => ({...prev, name: form.name})) }
+      if (r.data.success) { toast.success("Profile updated!"); setImageFile(null); setPreview(null); fetchProfile(); setUserData(prev => ({ ...prev, name: form.name })) }
     } catch (err) { toast.error(err.response?.data?.message || "Update failed!") }
     finally { setSaving(false) }
   }

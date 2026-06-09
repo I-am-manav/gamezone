@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { getGames } from "../services/api"
 
-const BACKEND = import.meta.env.VITE_API_URL
-
+const BACKEND = import.meta.env.VITE_API_URL || "http://localhost:8000"
 export default function Games() {
   const [games, setGames] = useState([])
   const [loading, setLoading] = useState(true)

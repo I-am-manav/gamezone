@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { getGameDetails, getSlots, getSeats, bookSeat, genOrderId, verifyPayment } from "../services/api"
 
-const BACKEND = "http://localhost:8000"
+const BACKEND = import.meta.env.VITE_API_URL || "http://localhost:8000"
 const RAZORPAY_KEY = "rzp_test_SpMwdOCtOvvVKT" // replace with your key
 
 export default function GameDetail({ isAuthenticated }) {
