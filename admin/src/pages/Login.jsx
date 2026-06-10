@@ -56,9 +56,9 @@ export default function Login({ setIsAuthenticated, setAdminName }) {
                       {loading ? <><span className="spinner-border spinner-border-sm me-2" />Signing in...</> : "Sign In"}
                     </button>
                   </form>
-                  <div className="p-3 rounded" style={{ background: "#fff3e0", border: "1px solid #ffcc80", fontSize: 13, color: "#e65100" }}>
+                  {/* <div className="p-3 rounded" style={{ background: "#fff3e0", border: "1px solid #ffcc80", fontSize: 13, color: "#e65100" }}>
                     <i className="ti-info-circle me-1" /><strong>Admin only.</strong> Default: admin@gamezone.com / Admin@123
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
