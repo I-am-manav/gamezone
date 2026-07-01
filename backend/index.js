@@ -65,15 +65,9 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use(cors({
-  origin: [
-    "https://gamezone-5c3r.vercel.app",
-    "https://gamezone-5c3r-h9xobdbg8-i-am-manavs-projects.vercel.app",
-    "http://localhost:5173",
-    "http://localhost:5174",
-    "https://gamezone-iota-nine.vercel.app"
-  ],
-  credentials: true
+  origin: "*"
 }));
+
 // ── Static File Serving ───────────────────────────────────────────────────────
 app.use("/uploads/games", express.static("uploads/games"));
 app.use("/uploads/profiles", express.static("uploads/profiles"));
